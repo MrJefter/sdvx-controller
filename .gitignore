@@ -1,0 +1,32 @@
+# Папки сборки и временные файлы для STM32CubeIDE / Eclipse
+firmware/HID_SDVX_NEW4/Debug/
+firmware/HID_SDVX_NEW4/Release/
+
+# Файлы, генерируемые STM32CubeIDE / компилятором
+*.o
+*.d
+*.elf
+*.map
+*.list
+*.su
+*.cyclo
+
+# Настройки STM32CubeIDE SFR view
+firmware/HID_SDVX_NEW4/.settings/com.st.stm32cube.ide.mcu.sfrview.prefs
+
+# Бэкапы и автосохранения от CAD-программ и других редакторов
+*.bak
+*.tmp
+*.temp
+*~
+
+# Специфичные для ОС файлы
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Логи
+*.log
+
+# VS Code
+.vscode/
