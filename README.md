@@ -1,81 +1,82 @@
 # DIY SDVX Controller
 
+[Read this page in Russian (Читать на русском)](README_RU.md)
+
 <img src="docs/images/SDVX%20Controller%20-%20Assembly%20Render.png" alt="SDVX Controller Assembly Render" width="600"/>
 
-Привет! Это проект DIY контроллера для Sound Voltex и подобных ритм-игр. Он построен на базе микроконтроллера STM32 (Black Pill), с кастомной прошивкой, печатной платой и корпусом, напечатанным на 3D-принтере.
+Hello! This is a DIY controller project for Sound Voltex and similar rhythm games. It's built using an STM32 microcontroller (Black Pill), with custom firmware, a custom PCB, and a 3D-printed enclosure.
 
-## Особенности проекта
+## Project Features
 
-*   **Микроконтроллер** STM32F401 (на плате Black Pill v3.0).
-*   **Кнопки** 7 основных (BT-A, B, C, D, START) + 2 FX-кнопки (FX-L, FX-R) на CherryMX переключателях (например, Outemu Red).
-*   **Энкодеры** 2 поворотных LPD3806 (VOL-L, VOL-R).
-*   **Адресная RGB-подсветка** на светодиодах WS2812B (опционально, лента на PB0).
-*   **Интерфейс** USB HID (контроллер определяется как стандартное игровое устройство).
-*   **Полностью 3D-печатный корпус**.
-*   **Печатная плата** для однослойного травления в домашних условиях, нет нужды заказывать плату.
+*   **Microcontroller** STM32F401 (on a Black Pill v3.0 board).
+*   **Buttons** 7 main (BT-A, B, C, D, START) + 2 FX buttons (FX-L, FX-R) on CherryMX switches (e.g., Outemu Red).
+*   **Encoders** 2 rotary LPD3806 encoders (VOL-L, VOL-R).
+*   **Addressable RGB lighting** on WS2812B LEDs (optional, strip connected to PB0).
+*   **Interface** USB HID (the controller is recognized as a standard game device).
+*   **Fully 3D-printed enclosure**.
+*   **PCB** ideal for single-layer home etching, no need to order a board.
 
-## Демонстрация работы
+## Demonstration
 
 <img src="docs/images/MVP.gif" alt="MVP Link" width="600"/>
 
 <img src="docs/images/Full%20Assembly%20See-Through.jpg" alt="Full Assembly See-Through" width="600"/>
 
-## Аппаратная часть
+## Hardware
 
-Все файлы, относящиеся к аппаратной части, находятся в папке [`hardware/`](./hardware/).
+All hardware-related files are located in the [`hardware/`](./hardware/) folder.
 
-### Печатная плата
-Проект печатной платы разработан в EasyEDA. Исходные файлы, Gerber-файлы для заказа и спецификация (BOM) находятся в `hardware/pcb/`.
+### PCB
+The PCB project was designed in EasyEDA. Source files, Gerber files for ordering, and the Bill of Materials (BOM) are located in `hardware/pcb/`.
 
-| Схематик | Разводка платы |
+| Schematic | Board Layout |
 |---|---|
 | <img src="docs/images/Schematic.png" alt="Schematic" width="400"/> | <img src="docs/images/PCB.png" alt="PCB Layout" width="400"/> |
 
-**Фотографии сборки PCB:**
-| Лицевая сторона PCB | Оборотная сторона PCB |
+**PCB Assembly Photos:**
+| PCB Front | PCB Back |
 |---|---|
-| <img src="docs/images/PCB%20Front.jpg" alt="PCB Front" width="400"/> | <img src="docs/images/PCB%20Bottom.jpg" alt="PCB Bottom" width="400"/> |
+| <img src="docs/images/PCB%20Front.jpg" alt="PCB Front" width="400"/> | <img src="docs/images/PCB%20Bottom.jpg" alt="PCB Back" width="400"/> |
 
-### Корпус
-3D-модели корпуса и его компонентов разработаны в КОМПАС-3D. Исходные файлы CAD, экспортированные STEP-файлы и STL-файлы для печати находятся в `hardware/enclosure/` и `hardware/stl_for_printing/`.
+### Enclosure
+3D models for the enclosure and its components were designed in KOMPAS-3D. Source CAD files, exported STEP files, and STL files for printing are located in `hardware/enclosure/` and `hardware/stl_for_printing/`.
 
-3D-модели используемых компонентов (BlackPill, энкодеры, переключатели) находятся в `hardware/enclosure/component_models_3d/`.
+3D models of the components used (BlackPill, encoders, switches) are in `hardware/enclosure/component_models_3d/`.
 
-### Процесс сборки (фото)
+### Assembly Process (Photos)
 
-| Подключение энкодеров к передней панели | Установка светодиодной ленты |
+| Connecting encoders to the front panel | LED strip installation |
 |---|---|
 | <img src="docs/images/Front%20panel%20PCB%20and%20encoders%20attached.jpg" alt="Front panel PCB and encoders attached" width="400"/> | <img src="docs/images/LED%20Strip%20Installation.jpg" alt="LED Strip Installation" width="400"/> |
 
-**Доработка BlackPill:**
+**BlackPill Modification:**
 
-При желании можно выполнить одну небольшую аппаратную модификацию для BlackPill, добавив керамический конденсатор на 150 нФ (как на иллюстрации), чтобы можно было уходить в DFU по зажатию START на 10 секунд.
-
+Optionally, a small hardware modification can be made to the BlackPill by adding a 150nF ceramic capacitor (as shown in the illustration). This allows entering DFU mode by holding the START button for 10 seconds.
 <img src="docs/images/BlackPill%20Simple%20DFU%20Entrance%20Lifehack.jpg" alt="BlackPill DFU Lifehack" width="400"/>
 
-## Программное обеспечение (Прошивка)
+## Software (Firmware)
 
-Прошивка для микроконтроллера STM32 разработана с использованием STM32CubeIDE. Исходный код находится в папке [`firmware/`](./firmware/).
+The firmware for the STM32 microcontroller was developed using STM32CubeIDE. The source code is located in the [`firmware/`](./firmware/) folder.
 
-Ключевые функции прошивки:
-*   Опрос состояния кнопок и энкодеров.
-*   Управление RGB-подсветкой, включая визуальные эффекты.
-*   Передача данных на ПК по USB HID протоколу.
+Key firmware functions:
+*   Polling button and encoder states.
+*   Controlling RGB lighting, including visual effects.
+*   Transmitting data to the PC via USB HID protocol.
 
-## Сборка и настройка
+## Assembly and Setup
 
-[ЗДЕСЬ БУДЕТ ПОДРОБНОЕ РУКОВОДСТВО ПО СБОРКЕ, СПИСОК КОМПОНЕНТОВ, ИНСТРУКЦИИ ПО ПРОШИВКЕ МК И НАСТРОЙКЕ]
+[A DETAILED ASSEMBLY GUIDE, COMPONENT LIST, FIRMWARE FLASHING INSTRUCTIONS, AND SETUP DETAILS WILL BE HERE]
 
-Примерный порядок действий:
-1.  **Напечатайте корпус**, используя STL-файлы из папки `hardware/stl_for_printing/`.
-2.  **Закажите плату** по Gerber-файлам из `hardware/pcb/gerbers/` или **вытравите самостоятельно** по проекту из `hardware/pcb/easyeda_project/`.
-3.  **Соберите плату**, припаяйте кнопки, энкодеры, светодиодные ленты.
-4.  **Соберите корпус.**
-5.  **Прошейте микроконтроллер** - скомпилируйте проект из `firmware/` (или воспользуйтесь готовым бинарником из релизов) и прошейте Black Pill (например, через DFU режим или с помощью ST-Link).
-6.  **Вы великолепны!**
+General steps:
+1.  **Print the enclosure parts** using the STL files from the `hardware/stl_for_printing/` folder.
+2.  **Manufacture the PCB:** Either order it using the Gerber files from `hardware/pcb/gerbers/` or **etch it yourself** using the project files from `hardware/pcb/easyeda_project/`.
+3.  **Assemble the PCB**, solder buttons, encoders, LED strips.
+4.  **Assemble the enclosure.**
+5.  **Flash the microcontroller** - compile the project from `firmware/` (or use a pre-compiled binary from the releases) and flash the Black Pill (e.g., via DFU mode or using an ST-Link).
+6.  **You're awesome!**
 
-Более подробные инструкции по сборке и настройке будут добавлены в папку `docs/` позже (когда нибудь).
+More detailed instructions for assembly and setup will be added to the `docs/` folder later (sometime).
 
-## Лицензия
+## License
 
-Этот проект распространяется под лицензией **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)**.
+This project is licensed under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)**.
