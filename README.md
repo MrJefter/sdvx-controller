@@ -10,7 +10,7 @@ Hello! This is a DIY controller project for Sound Voltex and similar rhythm game
 
 *   **Microcontroller** STM32F401 (on a Black Pill v3.0 board).
 *   **Buttons** 7 main (BT-A, B, C, D, START) + 2 FX buttons (FX-L, FX-R) on CherryMX switches (e.g., Outemu Red).
-*   **Encoders** 2 rotary LPD3806 encoders (VOL-L, VOL-R).
+*   **Rotary encoders** 2 x LPD3806 (VOL-L, VOL-R).
 *   **Addressable RGB lighting** on WS2812B LEDs (optional, strip connected to PB0).
 *   **Interface** USB HID (the controller is recognized as a standard game device).
 *   **Fully 3D-printed enclosure**.
@@ -27,18 +27,21 @@ Hello! This is a DIY controller project for Sound Voltex and similar rhythm game
 All hardware-related files are located in the [`hardware/`](./hardware/) folder.
 
 ### PCB
-The PCB project was designed in EasyEDA. Source files, Gerber files for ordering, and the Bill of Materials (BOM) are located in `hardware/pcb/`.
+
+The PCB project was designed in EasyEDA. Source files, Gerber files for ordering, and the BOM are located in `hardware/pcb/`.
 
 | Schematic | Board Layout |
 |---|---|
 | <img src="docs/images/Schematic.png" alt="Schematic" width="400"/> | <img src="docs/images/PCB.png" alt="PCB Layout" width="400"/> |
 
 **PCB Assembly Photos:**
+
 | PCB Front | PCB Back |
 |---|---|
 | <img src="docs/images/PCB%20Front.jpg" alt="PCB Front" width="400"/> | <img src="docs/images/PCB%20Bottom.jpg" alt="PCB Back" width="400"/> |
 
 ### Enclosure
+
 3D models for the enclosure and its components were designed in KOMPAS-3D. Source CAD files, exported STEP files, and STL files for printing are located in `hardware/enclosure/` and `hardware/stl_for_printing/`.
 
 3D models of the components used (BlackPill, encoders, switches) are in `hardware/enclosure/component_models_3d/`.
@@ -52,6 +55,7 @@ The PCB project was designed in EasyEDA. Source files, Gerber files for ordering
 **BlackPill Modification:**
 
 Optionally, a small hardware modification can be made to the BlackPill by adding a 150nF ceramic capacitor (as shown in the illustration). This allows entering DFU mode by holding the START button for 10 seconds.
+
 <img src="docs/images/BlackPill%20Simple%20DFU%20Entrance%20Lifehack.jpg" alt="BlackPill DFU Lifehack" width="400"/>
 
 ## Software (Firmware)
@@ -59,7 +63,7 @@ Optionally, a small hardware modification can be made to the BlackPill by adding
 The firmware for the STM32 microcontroller was developed using STM32CubeIDE. The source code is located in the [`firmware/`](./firmware/) folder.
 
 Key firmware functions:
-*   Polling button and encoder states.
+*   Polling buttons and encoders states.
 *   Controlling RGB lighting, including visual effects.
 *   Transmitting data to the PC via USB HID protocol.
 
