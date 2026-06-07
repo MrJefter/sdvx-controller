@@ -83,4 +83,4 @@
 
 ## Лицензия
 
-Этот проект распространяется под лицензией **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)**.
+Этот проект распространяется под лицензией **GNU General Public License версии 3.0 (GPL-3.0)**. Подробности см. в файле [LICENSE](LICENSE).

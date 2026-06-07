@@ -83,4 +83,4 @@ More detailed instructions for assembly and setup will be added to the `docs/` f
 
 ## License
 
-This project is licensed under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)**.
+This project is licensed under the **GNU General Public License v3.0 (GPL-3.0)**. See [LICENSE](LICENSE) for details.
